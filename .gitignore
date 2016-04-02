@@ -42,3 +42,6 @@ Thumbs.db
 *.ncb
 *.suo
 *.user
+
+source/cl_dll/Playtest
+source/dlls/Playtest
