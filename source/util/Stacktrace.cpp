@@ -129,7 +129,7 @@ char *stackTrace( int skipAssert ) {
 	// a count of number of debug formats (numDebugFormats)
 	// Parse these to find the COFF headers
 	IMAGE_COFF_SYMBOLS_HEADER *coffHeader = 0;
-	for( i=0; i<numDebugFormats; i++, debugDir++ ) {
+	for( int i=0; i<numDebugFormats; i++, debugDir++ ) {
 		if(
 			debugDir->Type == IMAGE_DEBUG_TYPE_COFF &&
 		    ntHeader->FileHeader.PointerToSymbolTable
@@ -145,7 +145,7 @@ char *stackTrace( int skipAssert ) {
 		     "Dumping hex trace instead:\n"
 		);
 
-		for( i=0; i<stackTraceCount; i++ ) {
+		for( int i=0; i<stackTraceCount; i++ ) {
 			OUTS "%08X(", baseAddress+stackTrace[i] );
 			try {
 				int *a = (int *)argBase[i+1];
@@ -185,7 +185,7 @@ char *stackTrace( int skipAssert ) {
 	IMAGE_SYMBOL *matchingStackSymbols[STACK_TRACE_SIZE];
 	memset( matchingStackSymbols, 0, sizeof(IMAGE_SYMBOL *) * STACK_TRACE_SIZE );
 	IMAGE_SYMBOL *lastSymbol = coffSym++;
-	for( i=0; i<coffSymbolCount-1; i++ ) {
+	for( int i=0; i<coffSymbolCount-1; i++ ) {
 		char *symName = 
 			(char *)coffSym->N.Name.Short != 0 ? 
 			(char *)coffSym->N.ShortName : 
@@ -209,7 +209,7 @@ char *stackTrace( int skipAssert ) {
 		coffSym++;
 	}
 
-	for( i=0; i<stackTraceCount; i++ ) {
+	for( int i=0; i<stackTraceCount; i++ ) {
 		if( matchingStackSymbols[i] == NULL ) {
 			OUTS "%X = Undefined Symbol\n", stackTrace[i] );
 		}
@@ -299,7 +299,7 @@ char *stackTrace( int skipAssert ) {
 									OUTS "  %X: ", ptr );
 									for( int l=0; l<16; l++ ) OUTS "%02X ", ptr[l] );
 									OUTS "  " );
-									for( l=0; l<16; l++ ) OUTS "%c", ptr[l]>=31&&ptr[l]<127?ptr[l]:'.' );
+									for( int l=0; l<16; l++ ) OUTS "%c", ptr[l]>=31&&ptr[l]<127?ptr[l]:'.' );
 									OUTS "\n" );
 								}
 							}
