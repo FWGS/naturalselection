@@ -9,5 +9,7 @@ Dependencies
 ------------
 
 libpng 1.0.66
+
 STLPort 5.2.1
+
 zlib 1.2.8
