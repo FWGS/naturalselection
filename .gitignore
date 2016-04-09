@@ -50,5 +50,7 @@ Thumbs.db
 # Build files #
 ###############
 source/cl_dll/Playtest
+source/cl_dll/Developer - debug
 source/dlls/Playtest
+source/dlls/Developer - debug
 source/linux/ns_map.txt

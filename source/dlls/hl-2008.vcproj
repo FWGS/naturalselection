@@ -17,8 +17,8 @@
 	<Configurations>
 		<Configuration
 			Name="Developer - release|Win32"
-			OutputDirectory="V:\temp\$(ProjectName)\$(ConfigurationName)/"
-			IntermediateDirectory="V:\temp\$(ProjectName)\$(ConfigurationName)/"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -119,8 +119,8 @@
 		</Configuration>
 		<Configuration
 			Name="Developer - debug|Win32"
-			OutputDirectory="V:\temp\$(ProjectName)\$(ConfigurationName)"
-			IntermediateDirectory="V:\temp\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -150,8 +150,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)&quot;;U:\include\stlport;U:\include\nexus;U:\include\lua;U:\include\particle;U:\include"
-				PreprocessorDefinitions="_DEBUG;DEBUG;WIN32;_WINDOWS;QUIVER;VOXEL;QUAKE2;VALVE_DLL;AVH_SERVER;AVH_SECURE_PRERELEASE_BUILD;USE_OLDAUTH;$(NOINHERIT)"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)&quot;;..\include\stlport;..\include\nexus;..\include\lua;..\particle;..\include"
+				PreprocessorDefinitions="_DEBUG;DEBUG;WIN32;_WINDOWS;QUIVER;VOXEL;QUAKE2;VALVE_DLL;AVH_SERVER;AVH_SECURE_PRERELEASE_BUILD;USE_OLDAUTH;$(NOINHERIT);_CRT_SECURE_NO_WARNINGS"
 				RuntimeLibrary="1"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"

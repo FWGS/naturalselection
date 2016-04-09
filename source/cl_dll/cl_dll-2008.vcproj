@@ -17,8 +17,8 @@
 	<Configurations>
 		<Configuration
 			Name="Developer - debug|Win32"
-			OutputDirectory="V:\temp\$(ProjectName)\$(ConfigurationName)"
-			IntermediateDirectory="V:\temp\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -50,8 +50,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)&quot;;U:\inlcude\stlport;U:\include\vgui;U:\include\nexus;U:\include\libpng;U:\include\fmod;U:\include\lua;U:\include\particle;U:\include\zlib"
-				PreprocessorDefinitions="_DEBUG;_MBCS;DEBUG;WIN32;_WINDOWS;AVH_CLIENT;$(NoInherit);USE_OLDAUTH"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)&quot;;..\inlcude\stlport;..\include\vgui;..\include\nexus;..\include\libpng;..\include\fmod;..\include\lua;..\particle;..\include\zlib"
+				PreprocessorDefinitions="_DEBUG;_MBCS;DEBUG;WIN32;_WINDOWS;AVH_CLIENT;$(NoInherit);USE_OLDAUTH;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -129,8 +129,8 @@
 		</Configuration>
 		<Configuration
 			Name="Developer - release|Win32"
-			OutputDirectory="V:\temp\$(ProjectName)\$(ConfigurationName)"
-			IntermediateDirectory="V:\temp\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"

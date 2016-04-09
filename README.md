@@ -12,6 +12,8 @@ libpng 1.0.66
 
 STLPort 5.2.1
 
+VGUI (from https://github.com/ValveSoftware/halflife/tree/master/utils/vgui)
+
 zlib 1.2.8
 
 
