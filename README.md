@@ -8,6 +8,8 @@ See http://unknownworlds.com/ns/ for information about the mod itself.
 Dependencies
 ------------
 
+FMOD 3.7.5
+
 libpng 1.0.66
 
 STLPort 5.2.1
