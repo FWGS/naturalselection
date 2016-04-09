@@ -32,6 +32,36 @@
 #pragma warning(disable : 4514)		// unreferenced inline function removed
 #pragma warning(disable : 4100)		// unreferenced formal parameter
 
+// Misc C-runtime library headers
+#include "stdio.h"
+#include "stdlib.h"
+#include "math.h"
+
+// Header file containing definition of globalvars_t and entvars_t
+typedef int	func_t;					//
+typedef int	string_t;				// from engine's pr_comp.h;
+typedef float vec_t;				// needed before including progdefs.h
+
+// Vector class
+#include "vector.h"
+
+// Defining it as a (bogus) struct helps enforce type-checking
+#ifndef THEVECTOR3T
+#define THEVECTOR3T
+#define vec3_t Vector
+#endif
+
+// Shared engine/DLL constants
+#include "common/const.h"
+#include "engine/progdefs.h"
+#include "engine/edict.h"
+
+// Shared header describing protocol between engine and DLLs
+#include "engine/eiface.h"
+
+// Shared header between the client DLL and the game DLLs
+#include "dlls/cdll_dll.h"
+
 // Prevent tons of unused windows definitions
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
@@ -64,35 +94,5 @@ typedef int BOOL;
 #endif
 #endif
 #endif //_WIN32
-
-// Misc C-runtime library headers
-#include "stdio.h"
-#include "stdlib.h"
-#include "math.h"
-
-// Header file containing definition of globalvars_t and entvars_t
-typedef int	func_t;					//
-typedef int	string_t;				// from engine's pr_comp.h;
-typedef float vec_t;				// needed before including progdefs.h
-
-// Vector class
-#include "vector.h"
-
-// Defining it as a (bogus) struct helps enforce type-checking
-#ifndef THEVECTOR3T
-#define THEVECTOR3T
-#define vec3_t Vector
-#endif
-
-// Shared engine/DLL constants
-#include "common/const.h"
-#include "engine/progdefs.h"
-#include "engine/edict.h"
-
-// Shared header describing protocol between engine and DLLs
-#include "engine/eiface.h"
-
-// Shared header between the client DLL and the game DLLs
-#include "dlls/cdll_dll.h"
 
 #endif //EXTDLL_H
