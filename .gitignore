@@ -43,5 +43,12 @@ Thumbs.db
 *.suo
 *.user
 
+# Temporary files #
+###################
+*~
+
+# Build files #
+###############
 source/cl_dll/Playtest
 source/dlls/Playtest
+source/linux/ns_map.txt
