@@ -160,7 +160,7 @@
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				WarningLevel="3"
-				WarnAsError="true"
+				WarnAsError="false"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
 				CompileAs="0"

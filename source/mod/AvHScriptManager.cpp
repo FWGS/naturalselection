@@ -87,9 +87,9 @@ void AvHScriptInstance::CallSimpleFunction(const string& inFunctionName)
 void AvHScriptInstance::Cleanup()
 {
 	ASSERT(!this->CallbacksPending());
+#ifdef USE_LUA
 	ASSERT(this->mState);
 
-#ifdef USE_LUA
 	lua_close(this->mState);
 #endif
 }
@@ -133,7 +133,9 @@ void AvHScriptInstance::Reset()
 
 void AvHScriptInstance::Run()
 {
+#ifdef USE_LUA
 	ASSERT(this->mState);
+#endif
 	ASSERT(this->mScriptName != "");
 
 	// Set global current script so it's accessible statically (needed for setting callbacks)
