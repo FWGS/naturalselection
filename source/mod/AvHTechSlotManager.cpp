@@ -46,7 +46,7 @@ AvHTechSlots::AvHTechSlots(AvHUser3 inUser3, AvHMessageID inMessageID1, AvHMessa
 	this->mReceivesUpgrades = inReceivesUpgrades;
 #endif
 }
-
+#include <string.h>
 bool AvHTechSlots::operator==(const AvHTechSlots& inTechSlot) const
 {
 	bool theAreEqual = false;

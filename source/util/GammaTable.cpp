@@ -1,6 +1,7 @@
 #include "util/GammaTable.h"
 
 // Include windows gamma functions
+#ifdef _WIN32
 #include <windows.h>
 #include "winuser.h"
 
@@ -197,3 +198,4 @@ void GammaTable::ProcessSlope(float inSlope)
 		}
 	}
 }
+#endif

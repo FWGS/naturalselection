@@ -17,16 +17,21 @@
 	#include <process.h>
 #endif
 #include "stdio.h"
-#include "stacktrace.h"
-#include "zassert.h"
+#include "Stacktrace.h"
+#include "Zassert.h"
 
 // LEVEL 2 CODE
 // The following is template code which can be cut, pasted, 
 // and modified appropriately for your application.
 //-------------------------------------------------------------------
 
+#ifdef _WIN32
 HWND hRunAssertBox;
-
+#else
+#define __dead
+#include <string.h>
+#include <stdlib.h>
+#endif
 int breakpointOnAssert = 0;
 	// If this flag is set and it is a debug build then
 	// it will issue an int 3 causing a breakpoint in the

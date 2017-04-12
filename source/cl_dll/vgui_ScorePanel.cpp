@@ -71,18 +71,18 @@
 #include "common/cl_entity.h"
 #include "vgui_TeamFortressViewport.h"
 #include "vgui_ScorePanel.h"
-#include "..\game_shared\vgui_helpers.h"
-#include "..\game_shared\vgui_loadtga.h"
+#include "../game_shared/vgui_helpers.h"
+#include "../game_shared/vgui_loadtga.h"
 #include "mod/AvHConstants.h"
 #include "mod/AvHTitles.h"
 #include "mod/AvHBasePlayerWeaponConstants.h"
 #include "vgui_SpectatorPanel.h"
 #include "cl_dll/demo.h"
 #include "mod/AvHServerVariables.h"
-#include "util\STLUtil.h"
+#include "util/STLUtil.h"
 #include "ui/ScoreboardIcon.h"
 
-#include "common/ITrackerUser.h"
+#include "common/itrackeruser.h"
 extern ITrackerUser *g_pTrackerUser;
 
 hud_player_info_t	 g_PlayerInfoList[MAX_PLAYERS+1];	   // player info from the engine
@@ -480,10 +480,12 @@ void ScorePanel::Update()
 //-----------------------------------------------------------------------------
 void ScorePanel::SortTeams()
 {
+	int i;
+
 	// clear out team scores
 	float theCurrentTime = gHUD.GetTimeOfLastUpdate();
 
-	for ( int i = 1; i <= m_iNumTeams; i++ )
+	for ( i = 1; i <= m_iNumTeams; i++ )
 	{
 		if ( !g_TeamInfo[i].scores_overriden )
 			g_TeamInfo[i].score =0;
@@ -493,6 +495,8 @@ void ScorePanel::SortTeams()
 	// recalc the team scores, then draw them
 	for ( i = 1; i <= MAX_PLAYERS; i++ )
 	{
+		int j;
+
 		if ( g_PlayerInfoList[i].name == NULL )
 			continue; // empty player slot, skip
 
@@ -500,7 +504,7 @@ void ScorePanel::SortTeams()
 			continue; // skip over players who are not in a team
 
 		// find what team this player is in
-		for ( int j = 1; j <= m_iNumTeams; j++ )
+		for ( j = 1; j <= m_iNumTeams; j++ )
 		{
 			if ( !stricmp( g_PlayerExtraInfo[i].teamname, g_TeamInfo[j].name ) )
 				break;
@@ -654,8 +658,10 @@ void ScorePanel::SortPlayers( int iTeam, char *team, bool inSortByEntityIndex)
 //-----------------------------------------------------------------------------
 void ScorePanel::RebuildTeams()
 {
+	int i;
+
 	// clear out player counts from teams
-	for ( int i = 1; i <= m_iNumTeams; i++ )
+	for ( i = 1; i <= m_iNumTeams; i++ )
 	{
 		g_TeamInfo[i].players = 0;
 	}
@@ -665,6 +671,8 @@ void ScorePanel::RebuildTeams()
 	m_iNumTeams = 0;
 	for ( i = 1; i <= MAX_PLAYERS; i++ )
 	{
+		int j;
+
 		if ( g_PlayerInfoList[i].name == NULL )
 			continue;
 
@@ -672,7 +680,7 @@ void ScorePanel::RebuildTeams()
 			continue; // skip over players who are not in a team
 
 		// is this player in an existing team?
-		for ( int j = 1; j <= m_iNumTeams; j++ )
+		for ( j = 1; j <= m_iNumTeams; j++ )
 		{
 			if ( g_TeamInfo[j].name[0] == '\0' )
 				break;
@@ -733,6 +741,7 @@ int ScorePanel::GetIconFrame(void)
 void ScorePanel::FillGrid()
 {
 	bool isNsMode=( strnicmp(gHUD.GetMapName().c_str(), "ns_", 3) == 0 );
+	int row;
 
 	CSchemeManager *pSchemes = gViewPort->GetSchemeManager();
 	SchemeHandle_t hScheme = pSchemes->getSchemeHandle("Scoreboard Text");
@@ -773,7 +782,7 @@ void ScorePanel::FillGrid()
 			m_HeaderLabels[COLUMN_EXTRA].setText(CHudTextMessage::BufferedLocaliseTextString("#COLLEVEL"));
 	}
 	
-	for(int row=0; row < NUM_ROWS; row++)
+	for(row=0; row < NUM_ROWS; row++)
 	{
 		CGrid *pGridRow = &m_PlayerGrids[row];
 		pGridRow->SetRowUnderline(0, false, 0, 0, 0, 0, 0);

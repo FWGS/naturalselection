@@ -2,6 +2,8 @@
 #define AVHPARTICLEEDITORHANDLER_H
 
 #include "types.h"
+#include <VGUI_KeyCode.h>
+#include <VGUI_MouseCode.h>
 #include <VGUI_InputSignal.h>
 #include <VGUI_IntChangeSignal.h>
 #include <VGUI_Slider.h>

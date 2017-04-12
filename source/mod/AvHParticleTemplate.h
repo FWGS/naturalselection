@@ -58,7 +58,7 @@ public:
 	void			SetParticleLifetime(float inNewLifetime);
 
 	string			GetSprite() const;
-	void			SetSprite(string& inSpriteName);
+	void			SetSprite(const string& inSpriteName);
 
 	ShapeType		GetGenerationShape() const;
 	void			SetGenerationShape(ShapeType inShape);

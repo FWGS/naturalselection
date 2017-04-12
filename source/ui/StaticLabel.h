@@ -1,7 +1,7 @@
 #ifndef STATICLABEL_H
 #define STATICLABEL_H
 
-#include "vgui_Label.h"
+#include "VGUI_Label.h"
 
 class StaticLabel : public vgui::Label
 {

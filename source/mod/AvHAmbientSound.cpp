@@ -22,7 +22,9 @@
 #include <stdlib.h>
 #pragma warning(push)
 #pragma warning(disable: 311)
+#if 0
 #include <fmoddyn.h>
+#endif
 #pragma warning(pop)
 #include "cl_dll/cl_util.h"
 
@@ -101,12 +103,14 @@ void AvHAmbientSound::UpdateVolume(const Vector& inListenerPosition)
 
 		theVolume = min(max(0, theVolume), 255);
 
-        FMOD_INSTANCE* theFMOD = gHUD.GetFMOD();
+#if 0
+    	    FMOD_INSTANCE* theFMOD = gHUD.GetFMOD();
 
-        if (theFMOD)
+    		if (theFMOD)
         {
     		theFMOD->FSOUND_SetVolume(this->mChannel, theVolume);
         }
 
+#endif
 	}
 }

@@ -40,7 +40,7 @@ string LowercaseString(const string& ioString);
 string LowercaseString(string& ioString);
 string UppercaseString(const string& ioString);
 string UppercaseString(string& ioString);
-int MakeIntFromString(string& inString);
+int MakeIntFromString(const string& inString);
 float MakeFloatFromString(string& inString);
 string MakeStringFromInt(int inNumber);
 string MakeStringFromFloat(float inNumber, int inNumDecimals = 1);

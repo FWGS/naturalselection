@@ -1,3 +1,4 @@
+#ifdef NEXUS
 #include <NexusClientInterface.h>
 #include "AvHNexusClient.h"
 #include "AvHNexusTunnelToServer.h"
@@ -43,3 +44,4 @@ bool AvHNexus::TunnelToServer::send(const byte_string& data)
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#endif

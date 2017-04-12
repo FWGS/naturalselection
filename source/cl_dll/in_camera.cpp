@@ -9,10 +9,10 @@
 #include "in_defs.h"
 
 #include "engine/APIProxy.h"
-#include "Exports.h"
-
+#include "exports.h"
+#ifdef _WIN32
 #include "windows.h"
-
+#endif
 float CL_KeyState (kbutton_t *key);
 extern "C" 
 {
@@ -90,7 +90,7 @@ float MoveToward( float cur, float goal, float maxspeed )
 {
 	if( cur != goal )
 	{
-		if( abs( cur - goal ) > 180.0 )
+		if( fabs( cur - goal ) > 180.0 )
 		{
 			if( cur < goal )
 				cur += 360.0;

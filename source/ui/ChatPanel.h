@@ -2,7 +2,7 @@
 #define CHAT_PANEL_H
 
 #include <VGUI_Panel.h>
-#include "game_shared/VGUI_DefaultInputSignal.h"
+#include "game_shared/vgui_defaultinputsignal.h"
 
 #include "mod/AvHFont.h"
 

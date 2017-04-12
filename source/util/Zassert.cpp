@@ -19,8 +19,8 @@
 #include "string.h"
 #include "stdio.h"
 #include "stdlib.h"
-#include "stacktrace.h"
-#include "zassert.h"
+#include "Stacktrace.h"
+#include "Zassert.h"
 #include "malloc.h"
 
 #ifdef WIN32

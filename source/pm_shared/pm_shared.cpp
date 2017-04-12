@@ -144,7 +144,7 @@ bool GetIsEntityAPlayer(int inPhysIndex);
 
 #ifdef AVH_CLIENT
 #include "pm_shared/pm_debug.h"
-#include "..\common\hltv.h"
+#include "../common/hltv.h"
 void PM_DebugLocations();
 typedef vector< DebugPoint >        PositionListType;
 DebugPointListType                  gTriDebugLocations;

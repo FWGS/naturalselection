@@ -19,8 +19,8 @@
 #ifndef COLOREDPANEL_H
 #define COLOREDPANEL_H
 
-#include "vgui_Panel.h"
-#include "vgui_Label.h"
+#include "VGUI_Panel.h"
+#include "VGUI_Label.h"
 
 class ColoredPanel : public vgui::Panel //public vgui::Label
 {

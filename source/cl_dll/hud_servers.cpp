@@ -5,8 +5,12 @@
 #include "hud_servers.h"
 #include "common/net_api.h"
 #include <string.h>
+#ifdef _WIN32
 #include <winsock.h>
-
+#else
+#include <arpa/inet.h>
+#define CALLBACK
+#endif
 static int	context_id;
 
 // Default master server address in case we can't read any from woncomm.lst file

@@ -28,7 +28,7 @@
 #include "engine/shake.h"
 #include "mod/AvHClientUtil.h"
 #include "engine/APIProxy.h"
-#include "Exports.h"
+#include "exports.h"
 #include "common/hltv.h"
 #include "util/MathUtil.h"
 #include "util/STLUtil.h"

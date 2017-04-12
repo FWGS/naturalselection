@@ -19,7 +19,7 @@
 #ifndef AVHTECHIMPULSEPANEL_H
 #define AVHTECHIMPULSEPANEL_H
 
-#include "vgui_Label.h"
+#include "VGUI_Label.h"
 #include "mod/AvHMessage.h"
 #include "ui/UIComponents.h"
 #include "VGUI_TextImage.h"

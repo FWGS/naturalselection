@@ -52,7 +52,7 @@
   #include "engine/cdll_int.h"
   #include "common/event_api.h"
   #include "common/cl_entity.h"
-  #include <particledefs.h>
+  #include <particledef.h>
   #include <p_vector.h>
   #include "common/usercmd.h"
   #include "pm_shared/pm_shared.h"
@@ -152,7 +152,7 @@ AvHParticleSystem::AvHParticleSystem(AvHParticleTemplate* inTemplate, uint32 inI
 void
 AvHParticleSystem::Collide(float inTime)
 {
-	#ifdef AVH_CLIENT
+	#if 0 //def AVH_CLIENT
 	ParticleGroup* theCurrentGroup = pGetCurrentGroup();
 	if(theCurrentGroup)
 	{

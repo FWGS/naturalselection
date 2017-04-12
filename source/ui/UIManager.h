@@ -13,7 +13,7 @@
 
 #include "textrep/TRTag.h"
 #include "textrep/TRDescription.h"
-#include "vgui_InputSignal.h"
+#include "VGUI_InputSignal.h"
 #include "ui/UIComponent.h"
 
 class CSchemeManager;

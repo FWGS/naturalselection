@@ -2,8 +2,9 @@
 #include "VGUI_KeyCode.h"
 #include "VGUI_App.h"
 #include "cl_dll/hud.h"
+#ifdef _WIN32
 #include <windows.h>
-
+#endif
 using namespace vgui;
 
 const char* ChatPanel::chatModeAll = "say";
@@ -40,7 +41,7 @@ void ChatPanel::CancelChat()
 
 void ChatPanel::KeyDown(int virtualKey, int scanCode)
 {
-
+#ifdef _WIN32
     if (virtualKey >= 0 && virtualKey < 256)
     {
         mKeyPushed[virtualKey] = true;
@@ -113,7 +114,7 @@ void ChatPanel::KeyDown(int virtualKey, int scanCode)
         }
 
     }
-
+#endif
 }
 
 void ChatPanel::paint()

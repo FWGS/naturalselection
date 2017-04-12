@@ -2030,7 +2030,8 @@ void DrawCircleOnGroundAtPoint(vec3_t inOrigin, int inNumSides, int inStartAngle
 
 void DrawDebugEffects()
 {
-	for(DebugPointListType::iterator theIter = gTriDebugLocations.begin(); theIter != gTriDebugLocations.end(); theIter++)
+	DebugPointListType::iterator theIter;
+	for(theIter = gTriDebugLocations.begin(); theIter != gTriDebugLocations.end(); theIter++)
 	{
 		vec3_t thePosition;
 		thePosition.x = theIter->x;

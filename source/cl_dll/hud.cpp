@@ -29,7 +29,7 @@
 #include "demo.h"
 #include "common/demo_api.h"
 #include "ui/UIComponent.h"
-#include "vgui_scorepanel.h"
+#include "vgui_ScorePanel.h"
 
 #include "mod/AvHNetworkMessages.h"
 #include "ui/ChatPanel.h"

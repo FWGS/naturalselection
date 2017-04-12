@@ -1,5 +1,5 @@
 
-#if defined( FINAL_VAC_BUILD )
+#if defined( FINAL_VAC_BUILD ) || !defined _WIN32
 #define CL_DLLEXPORT
 #else
 #define CL_DLLEXPORT __declspec( dllexport )

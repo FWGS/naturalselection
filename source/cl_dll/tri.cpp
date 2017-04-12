@@ -12,7 +12,7 @@
 #include "common/cl_entity.h"
 #include "common/triangleapi.h"
 #include "engine/APIProxy.h"
-#include "Exports.h"
+#include "exports.h"
 #include <p_vector.h>
 #include <papi.h>
 #include "mod/AvHParticleSystemManager.h"

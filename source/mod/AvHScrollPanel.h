@@ -1,7 +1,7 @@
 #ifndef AVHSCROLLPANEL_H
 #define AVHSCROLLPANEL_H
 
-#include "vgui_Panel.h"
+#include "VGUI_Panel.h"
 #include "ui/UIComponents.h"
 
 class AvHScrollPanel : public InvisiblePanel

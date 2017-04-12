@@ -19,7 +19,7 @@
 #include <memory.h>
 
 #include "engine/APIProxy.h"
-#include "Exports.h"
+#include "exports.h"
 #include "mod/AvHParticleTemplateClient.h"
 #include "cl_dll/view.h"
 

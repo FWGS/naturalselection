@@ -19,7 +19,7 @@
 #ifndef ButtonChain_H
 #define ButtonChain_H
 
-#include "vgui_Panel.h"
+#include "VGUI_Panel.h"
 
 class ButtonChain : public vgui::Panel
 {

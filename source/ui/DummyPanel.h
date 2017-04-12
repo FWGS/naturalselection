@@ -19,7 +19,7 @@
 #ifndef DUMMYPANEL_H
 #define DUMMYPANEL_H
 
-#include "vgui_Panel.h"
+#include "VGUI_Panel.h"
 #include "cl_dll/chud.h"
 #include "ui/FadingImageLabel.h"
 #include "ui/PieNode.h"

@@ -19,7 +19,7 @@
 #ifndef INVISIBLEPANEL_H
 #define INVISIBLEPANEL_H
 
-#include "vgui_Panel.h"
+#include "VGUI_Panel.h"
 
 class InvisiblePanel : public vgui::Panel
 {

@@ -9,7 +9,7 @@
 #define LOADPNG_H
 
 #include "bitmappng.h"
-#include "vgui_inputstream.h"
+#include "VGUI_InputStream.h"
 
 BitmapPNG* LoadPNG(char const *pFilename);
 BitmapPNG* LoadPNG(uchar* data, int length);

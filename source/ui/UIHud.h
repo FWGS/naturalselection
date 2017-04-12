@@ -9,9 +9,9 @@
 #include "cl_dll/chud.h"
 #include "textrep/TRDescription.h"
 #include "ui/UIManager.h"
-#include "vgui_InputSignal.h"
-#include "vgui_Scheme.h"
-#include "vgui_BitmapTGA.h"
+#include "VGUI_InputSignal.h"
+#include "VGUI_Scheme.h"
+#include "VGUI_BitmapTGA.h"
 #include "cl_dll/vgui_SchemeManager.h"
 
 class UIFactory;

@@ -3,8 +3,8 @@
 #ifndef SCOREBOARDICON_H
 #define SCOREBOARDICON_H
 
-#include "vgui.h"
-#include "vgui_bitmaptga.h"
+#include "VGUI.h"
+#include "VGUI_BitmapTGA.h"
 #include <vector>
 
 class ScoreboardIcon

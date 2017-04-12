@@ -36,14 +36,14 @@ BASE_CFLAGS=-Dstricmp=strcasecmp -D_strnicmp=strncasecmp -Dstrnicmp=strncasecmp 
 # -DAVH_SECURE_PRERELEASE_BUILD for CM testing
 
 #full optimization
-CFLAGS=$(BASE_CFLAGS) -w -Wall -nostdinc++ -fpermissive -ffor-scope -fPIC -mtune=$(ARCH) -O3 -pipe -funroll-loops -fdelayed-branch -falign-loops=4 -falign-jumps=4 -falign-functions=4 -march=$(ARCH) -m32 -ansi
+CFLAGS=$(BASE_CFLAGS) -w -Wall -fpermissive -ffor-scope -fPIC -mtune=$(ARCH) -O3 -pipe -funroll-loops -fdelayed-branch -falign-loops=4 -falign-jumps=4 -falign-functions=4 -march=$(ARCH) -m32
 
 #use these when debugging 
 #CFLAGS=$(BASE_CFLAGS) -fPIC -fno-for-scope   
 
 # add base directory (CGC)
 
-INCLUDEDIRS=-I$(LIBBASE) -I. -I$(LIBBASE)/include -I$(LIBBASE)/include/stlport -I$(LIBBASE)/particle -I$(LIBBASE)/include/lua -I../dlls -I../engine -I../common -I../mod -I../game_shared -I../pm_shared -I.. -I/usr/include/x86_64-linux-gnu/c++/4.9 -I/usr/include/c++/4.9 -I/usr/include/c++
+INCLUDEDIRS=-I$(LIBBASE) -I. -I$(LIBBASE)/include -I$(LIBBASE)/particle -I$(LIBBASE)/include/lua -I../dlls -I../engine -I../common -I../mod -I../game_shared -I../pm_shared -I.. -I/usr/include/x86_64-linux-gnu/c++/4.9 -I/usr/include/c++/4.9 -I/usr/include/c++
 LINKDIRS=  -L$(LIBBASE)/particle
 
 SHLIBEXT=so

@@ -16,7 +16,7 @@
 #include "mod/AvHSpecials.h"
 
 #include "engine/APIProxy.h"
-#include "Exports.h"
+#include "exports.h"
 
 void Game_AddObjects( void );
 

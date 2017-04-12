@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2001, Valve LLC, All rights reserved. ============
+//========= Copyright © 1996-2002, Valve LLC, All rights reserved. ============
 //
 // Purpose: 
 //
@@ -107,18 +107,19 @@ void CCheckButton2::SetText(char const *pText, ...)
 	
 	va_list marker;
 	va_start(marker, pText);
-	_vsnprintf(str, sizeof(str), pText, marker);
+	vsnprintf(str, sizeof(str), pText, marker);
 	va_end(marker);
 
 	m_Label.setText(str);
 	SetupControls();
 }
 
-
 void CCheckButton2::setFont(Font* font)
 {
     m_Label.setFont(font);
 }
+
+
 
 void CCheckButton2::SetTextColor(int r, int g, int b, int a)
 {

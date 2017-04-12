@@ -23,7 +23,7 @@
 #ifndef HL_HUD_H
 #define HL_HUD_H
 
-#include "CHud.h"
+#include "chud.h"
 
 class TeamFortressViewport;
 
@@ -36,7 +36,7 @@ extern AvHHud gHUD;
 #include "ammo.h"
 #include "cl_dll/chudmisc.h"
 
-#include "..\game_shared\voice_status.h"
+#include "../game_shared/voice_status.h"
 #include "hud_spectator.h"
 
 /*

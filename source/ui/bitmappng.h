@@ -8,7 +8,7 @@
 #ifndef BITMAPPNG_H
 #define BITMAPPNG_H
 
-#include "vgui_bitmap.h"
+#include "VGUI_Bitmap.h"
 
 class VGUIAPI BitmapPNG : public vgui::Bitmap
 {

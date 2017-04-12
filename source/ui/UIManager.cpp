@@ -2,14 +2,14 @@
 #include "ui/UIManager.h"
 #include "ui/UIFactory.h"
 #include "ui/UITags.h"
-#include "vgui_Menu.h"
-#include "vgui_App.h"
+#include "VGUI_Menu.h"
+#include "VGUI_App.h"
 #include "cl_dll/hud.h"
 #include "cl_dll/cl_util.h"
 #include "textrep/TRFactory.h"
 #include "cl_dll/vgui_SchemeManager.h"
-#include "vgui_TextPanel.h"
-#include "vgui_Label.h"
+#include "VGUI_TextPanel.h"
+#include "VGUI_Label.h"
 #include "cl_dll/vgui_TeamFortressViewport.h"
 #include "ui/GammaAwareComponent.h"
 #include "ui/ReloadableComponent.h"
@@ -314,7 +314,7 @@ void UIManager::SetMouseVisibility(bool inState)
         App::getInstance()->setCursorPos(ScreenWidth()/2, ScreenHeight()/2);
 
         // Hide cursor again
-        App::getInstance()->setCursorOveride( App::getInstance()->getScheme()->getCursor(Scheme::SchemeCursor::scu_none) );
+        App::getInstance()->setCursorOveride( App::getInstance()->getScheme()->getCursor(Scheme::scu_none) );
     }
 
     //App::getInstance()->setCursorOveride( App::getInstance()->getScheme()->getCursor(Scheme::SchemeCursor::scu_none) );

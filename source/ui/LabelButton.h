@@ -19,7 +19,7 @@
 #ifndef LABELBUTTON_H
 #define LABELBUTTON_H
 
-#include "vgui_Label.h"
+#include "VGUI_Label.h"
 
 class LabelButton : public vgui::Label
 {

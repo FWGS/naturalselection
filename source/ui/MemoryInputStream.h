@@ -1,7 +1,7 @@
 #ifndef MEMORYINPUTSTREAM_H
 #define MEMORYINPUTSTREAM_H
 
-#include "vgui_inputstream.h"
+#include "VGUI_InputStream.h"
 
 class MemoryInputStream : public vgui::InputStream
 {

@@ -21,7 +21,7 @@
 #include "GameStudioModelRenderer.h"
 
 #include "engine/APIProxy.h"
-#include "cl_dll/Exports.h"
+#include "cl_dll/exports.h"
 
 //
 // Override the StudioModelRender virtual member functions here to implement custom bone

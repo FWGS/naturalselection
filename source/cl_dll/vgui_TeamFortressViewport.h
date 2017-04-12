@@ -23,8 +23,8 @@
 #include<VGUI_Slider.h>
 #include<VGUI_TextEntry.h>
 #include "cl_dll/CLabelHeader.h"
-#include "game_shared/VGUI_ListBox.h"
-#include "game_shared/VGUI_Grid.h"
+#include "game_shared/vgui_listbox.h"
+#include "game_shared/vgui_grid.h"
 
 
 // custom scheme handling

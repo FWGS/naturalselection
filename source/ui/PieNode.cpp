@@ -187,7 +187,9 @@ void PieNode::DisableNodesNotInMessageList(const MessageIDList& inList)
 
 void PieNode::DisableNodesWhoseChildrenAreDisabled()
 {
-    for(int i = 0; i < kNumNodes; i++)
+    int i;
+
+    for(i = 0; i < kNumNodes; i++)
     {
         PieNode* theCurrentPieNode = this->mArray[i];
         if(theCurrentPieNode)

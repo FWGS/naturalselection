@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2001, Valve LLC, All rights reserved. ============
+//========= Copyright © 1996-2002, Valve LLC, All rights reserved. ============
 //
 // Purpose: 
 //
@@ -7,20 +7,18 @@
 
 #include "../cl_dll/wrect.h"
 #include "../cl_dll/cl_dll.h"
-#include "vgui.h"
+#include "VGUI.h"
 #include "vgui_loadtga.h"
-#include "vgui_inputstream.h"
+#include "VGUI_InputStream.h"
 
 
-//#include "ui/MemoryInputStream.h"
-
-// : HACK
-// Implemented old MemoryInputStream to work around bugs(?) in the other implementation or in
-// the vgui's handling of the other one
-class MemoryInputStream2 : public vgui::InputStream
+// ---------------------------------------------------------------------- //
+// Helper class for loading tga files.
+// ---------------------------------------------------------------------- //
+class MemoryInputStream : public vgui::InputStream
 {
 public:
-				MemoryInputStream2()
+				MemoryInputStream()
 				{
 					m_pData = NULL;
 					m_DataLen = m_ReadPos = 0;
@@ -63,38 +61,33 @@ public:
 	int			m_DataLen;
 	int			m_ReadPos;
 };
-// :
 
-vgui::BitmapTGA* vgui_LoadTGANoInvertAlpha(char const *pFilename)
-{ return vgui_LoadTGA(pFilename,false); }
-
-vgui::BitmapTGA* vgui_LoadTGA(char const *pFilename, bool bInvertAlpha)
+vgui::BitmapTGA* vgui_LoadTGA(char const *pFilename)
 {
-	// :
-	MemoryInputStream2 stream;
+	MemoryInputStream stream;
 	
 	stream.m_pData = gEngfuncs.COM_LoadFile((char*)pFilename, 5, &stream.m_DataLen);
 	if(!stream.m_pData)
 		return NULL;
 	
 	stream.m_ReadPos = 0;
-	vgui::BitmapTGA *pRet = new vgui::BitmapTGA(&stream, bInvertAlpha);
+	vgui::BitmapTGA *pRet = new vgui::BitmapTGA(&stream, true);
 	gEngfuncs.COM_FreeFile(stream.m_pData);
 	
 	return pRet;
-	// :
-
-/*	// New implementation:
-	int nLength = 0;
-	uchar* pData = gEngfuncs.COM_LoadFile((char*)pFilename, 5, &nLength);
-
-	if( !pData )
-		return NULL;
-
-	MemoryInputStream stream(pData,nLength);
-	vgui::BitmapTGA *pRet = new vgui::BitmapTGA(&stream, bInvertAlpha);
-	gEngfuncs.COM_FreeFile(pData);
-
-	return pRet;*/
 }
 
+vgui::BitmapTGA* vgui_LoadTGANoInvertAlpha(char const *pFilename)
+{
+	MemoryInputStream stream;
+	
+	stream.m_pData = gEngfuncs.COM_LoadFile((char*)pFilename, 5, &stream.m_DataLen);
+	if(!stream.m_pData)
+		return NULL;
+	
+	stream.m_ReadPos = 0;
+	vgui::BitmapTGA *pRet = new vgui::BitmapTGA(&stream, false);
+	gEngfuncs.COM_FreeFile(stream.m_pData);
+	
+	return pRet;
+}

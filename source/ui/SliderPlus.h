@@ -3,6 +3,7 @@
 
 #include "VGUI_Panel.h"
 #include "VGUI_InputSignal.h"
+#include "VGUI_IntChangeSignal.h"
 using namespace vgui;
 
 class SliderPlus : public Panel, public InputSignal

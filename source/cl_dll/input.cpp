@@ -56,10 +56,10 @@ extern "C"
 #include "mod/AvHScriptManager.h"
 #include "mod/AvHScrollHandler.h"
 #include "mod/AvHCommanderModeHandler.h"
-#include "Util/Mat3.h"
+#include "util/Mat3.h"
 
 #include "engine/APIProxy.h"
-#include "Exports.h"
+#include "exports.h"
 
 // : duck toggle
 extern bool g_bDuckToggled;

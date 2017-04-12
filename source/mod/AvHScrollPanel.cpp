@@ -1,4 +1,4 @@
-#include "vgui_Panel.h"
+#include "VGUI_Panel.h"
 #include "ui/UIComponents.h"
 #include "mod/AvHScrollPanel.h"
 

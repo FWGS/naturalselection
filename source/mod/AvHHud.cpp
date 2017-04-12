@@ -132,9 +132,10 @@
 //===============================================================================
 #include "mod/AvHConstants.h"
 #include "mod/AvHHud.h"
-#include "cl_dll/hud.h"
+#define NOMINMAX
 #include "cl_dll/cl_util.h"
-#include "vgui_label.h"
+#include "cl_dll/hud.h"
+#include "VGUI_Label.h"
 #include "ui/PieMenu.h"
 #include "mod/AvHTeamHierarchy.h"
 #include "mod/AvHPieMenuHandler.h"
@@ -189,6 +190,8 @@
 #include "util/Tokenizer.h"
 #include <sstream>
 #include "mod/AvHNetworkMessages.h"
+#define max(a, b)  (((a) > (b)) ? (a) : (b))
+#define min(a, b)  (((a) < (b)) ? (a) : (b))
 
 //#include "cl_dll/studio_util.h"
 //#include "cl_dll/r_studioint.h"
@@ -199,8 +202,9 @@ void RemoveAllDecals();
 void ScorePanel_InitializeDemoRecording();
 
 // Include windows for GDI and gamma functions
+#ifdef _WIN32
 #include "windows.h"
-
+#endif
 extern engine_studio_api_t IEngineStudio;
 
 AvHPieMenuHandler						gPieMenuHandler;
@@ -348,6 +352,7 @@ bool AvHHud::OnKeyEvent(int virtualKey, int scanCode, bool pressed)
             }
         }
        
+#ifdef _WIN32
         if (virtualKey == VK_ESCAPE && GetInTopDownMode() && mGhostBuilding != MESSAGE_NULL)
         {
             if (pressed)
@@ -356,6 +361,7 @@ bool AvHHud::OnKeyEvent(int virtualKey, int scanCode, bool pressed)
             }
             return true;
         }
+#endif
     
     }
 
@@ -512,7 +518,7 @@ void CLinkGhostBuildingCallback( struct tempent_s *ent, float frametime, float c
 #define BIND_MESSAGE(x) \
     int __MsgFunc_##x(const char *pszName, int iSize, void *pbuf) \
 	{ \
-    	return gHUD.##x(pszName, iSize, pbuf ); \
+    	return gHUD.x(pszName, iSize, pbuf ); \
     }
 
 AvHHud::AvHHud(const string& inFilename, UIFactory* inFactory) : UIHud(inFilename, inFactory)
@@ -1143,8 +1149,8 @@ bool AvHHud::GetAndClearTopDownScrollAmount(int& outX, int& outY, int& outZ)
 	{
 		const int kScreenWidth = ScreenWidth();
 		const int kScreenHeight = ScreenHeight();
-		const kScrollHorizontal = .0152f*kScreenWidth;
-		const kScrollVertical = .015f*kScreenHeight;
+		const float kScrollHorizontal = .0152f*kScreenWidth;
+		const float kScrollVertical = .015f*kScreenHeight;
 
 		// Left side
 		if(this->GetIsMouseInRegion(0, 0, kScrollHorizontal, kScreenHeight) || (gScrollHandler.GetXScroll() < 0))
@@ -1808,7 +1814,7 @@ int AvHHud::GetMaxAlienResources() const
 bool AvHHud::SetGamma(float inSlope)
 {
     bool theSuccess = false;
-
+#ifdef _WIN32
 	// Disable gamma stuff in debug for sanity
 //	#ifndef DEBUG
 	
@@ -1855,7 +1861,7 @@ bool AvHHud::SetGamma(float inSlope)
 	}
 
 	//#endif
-	
+#endif
     return theSuccess;
 }
 
@@ -3675,13 +3681,16 @@ void AvHHud::Init(void)
 	sGameGammaTable.InitializeFromVideoState();
 
 	int theRC = atexit(AvHHud::ResetGammaAtExit);
+#ifdef _WIN32
 	_onexit_t theExit = _onexit(AvHHud::ResetGammaAtExitForOnExit);
-	
+#endif
 	signal(SIGILL, AvHHud::ResetGammaAtExit);
 	signal(SIGFPE, AvHHud::ResetGammaAtExit);
 	signal(SIGSEGV, AvHHud::ResetGammaAtExit);
 	signal(SIGTERM, AvHHud::ResetGammaAtExit);
+#ifdef _WIN32
 	signal(SIGBREAK, AvHHud::ResetGammaAtExit);
+#endif
 	signal(SIGABRT, AvHHud::ResetGammaAtExit);
 
 	//memset(this->mAlienUILifeforms, 0, sizeof(HSPRITE)*kNumAlienLifeforms);
@@ -4052,6 +4061,7 @@ void AvHHud::InitCommanderMode()
 // Read in base state from stream (called by Demo_ReadBuffer)
 int AvHHud::InitializeDemoPlayback(int inSize, unsigned char* inBuffer)
 {
+	int i;
 	// Read in base state
 	int theBytesRead = 0;
 	
@@ -4060,7 +4070,7 @@ int AvHHud::InitializeDemoPlayback(int inSize, unsigned char* inBuffer)
 	//this->mUpgradeCosts.clear();
 	LoadData(&theNumUpgrades, inBuffer, sizeof(int), theBytesRead);
 
-	for(int i = 0; i < theNumUpgrades; i++)
+	for(i = 0; i < theNumUpgrades; i++)
 	{
 		// Read in upgrades (for backwards-compatibility)
 		int theFirst = 0;
@@ -4198,6 +4208,7 @@ void AvHHud::InitializeDemoRecording()
 	// Write number of upgrades, then each upgrade
 	// No longer done, but need to add in upgrades for backwards compatibility
 	int theUpgrades = 0;
+	int i;
 	int theUpgradesSize = sizeof(theUpgrades);
 
 	// Gamma, resources
@@ -4288,7 +4299,7 @@ void AvHHud::InitializeDemoRecording()
 	int theSoundNameListSize = (int)this->mSoundNameList.size();
 	theTotalSize += sizeof(theSoundNameListSize);
 
-	for(int i = 0; i < theSoundNameListSize; i++)
+	for(i = 0; i < theSoundNameListSize; i++)
 	{
 		string theCurrentSoundName = this->mSoundNameList[i];
 		theTotalSize += GetDataSize(theCurrentSoundName);
@@ -5619,7 +5630,7 @@ string AvHHud::GetRankTitle(bool inShowUnspentLevels) const
 {
 	string theText;
 
-	char* theTeamName = this->GetIsMarine() ? "Marine" : "Alien";
+	const char* theTeamName = this->GetIsMarine() ? "Marine" : "Alien";
 	int theCurrentLevel = this->GetHUDExperienceLevel();
 
 	char theCharArray[512];
@@ -7147,7 +7158,7 @@ float AvHHud::GetServerVariableFloat(const char* inName) const
 
 }
 
-
+#ifdef _WIN32
 /**
  * Prints the call stack when an unhandled exception occurs.
  */
@@ -7199,3 +7210,4 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL,
     }
 	return TRUE;
 }
+#endif

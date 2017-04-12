@@ -1,6 +1,6 @@
 #include "ScoreboardIcon.h"
-#include "game_shared\vgui_loadtga.h"
-#include "util\STLUtil.h"
+#include "game_shared/vgui_loadtga.h"
+#include "util/STLUtil.h"
 #include <algorithm>	//max
 
 void loadImages( const int icon_number, std::vector<vgui::BitmapTGA*>& images );

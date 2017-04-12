@@ -2,19 +2,26 @@
 #include "textrep/TRFactory.h"
 #include "cl_dll/cl_util.h"
 #include "cl_dll/hud.h"
-#include "vgui_Scheme.h"
-#include "vgui_Panel.h"
+#include "VGUI_Scheme.h"
+#include "VGUI_Panel.h"
 #include "mod/AvHClientVariables.h"
-#include "vgui_App.h"
-
+#include "VGUI_App.h"
+#ifdef _WIN32
 // for FindFirst and FindNext
 #include <windows.h>
+
 #pragma warning(push)
 #pragma warning(disable: 311)
+#endif
+#if 0
 #include <fmoddyn.h>
+#include <wincompat.h>
 #include <fmod_errors.h>
+#endif
 #pragma warning(pop)
-
+#ifndef _MAX_PATH
+#define _MAX_PATH 4096
+#endif
 using namespace vgui;
 
 extern BitmapTGA* LoadTGA( const char* pImageName );
@@ -103,7 +110,7 @@ void UIHud::InitializeSound(void)
 
     sprintf(theFileName[0], "%s/fmod.dll", getModDirectory());
     sprintf(theFileName[1], "fmod.dll");
-    
+#if 0    
     for (int i = 0; i < 2 && mFMOD == NULL; ++i)
     {
 
@@ -132,7 +139,7 @@ void UIHud::InitializeSound(void)
         }
     
     }
-
+#endif
 }
 
 
@@ -189,6 +196,7 @@ void UIHud::LoadSchemes(void)
 
 bool UIHud::PickRandomSong(string& outRelativeSongName) const
 {
+#if 0
 	WIN32_FIND_DATA		theFindData;
 	HANDLE				theFileHandle;
 	StringList			theSongList;
@@ -231,23 +239,27 @@ bool UIHud::PickRandomSong(string& outRelativeSongName) const
 	}
 	
 	return theFoundSong;
+#endif
+return false;
 }
 
 void UIHud::ClearStream(FSOUND_STREAM*& ioStream)
 {
+#if 0
 	// TODO: Check error codes to make sure we don't leak?
     if (mSoundInitialized)
     {
     	mFMOD->FSOUND_Stream_Stop(ioStream);
     	mFMOD->FSOUND_Stream_Close(ioStream);
     }
+#endif
 	ioStream = NULL;
 }
 
 bool UIHud::PlaySong(string& inSongName, int& ioVolume, bool inLooping, FSOUND_STREAM*& outStream, int& outChannel, int& outBytesInSong, float inTimeElapsed)
 {
 	bool theSuccess = false;
-
+#if 0
 	// Replace '/' with '\\'
 	std::replace(inSongName.begin(), inSongName.end(), '/', '\\');
 	
@@ -312,14 +324,14 @@ bool UIHud::PlaySong(string& inSongName, int& ioVolume, bool inLooping, FSOUND_S
 	    }
     
     }
-
+#endif
 	return theSuccess;
 }
 
 bool UIHud::PlayInternetStream(const string& inStreamName, string& outError)
 {
     bool theSuccess = false;
-
+#if 0
     // Initialize sound system
     if(!this->mSoundInitialized)
     {
@@ -353,7 +365,7 @@ bool UIHud::PlayInternetStream(const string& inStreamName, string& outError)
             }
         }
     }
-
+#endif
     return theSuccess;
 }
 
@@ -367,7 +379,7 @@ void UIHud::StopInternetStream()
 bool UIHud::UpdateInternetStream(float inCurrentTime, string& outError)
 {
     bool theSuccess = true;
-
+#if 0
     // If we're playing a stream
     if(this->mCurrentInternetStream)
     {
@@ -399,12 +411,13 @@ bool UIHud::UpdateInternetStream(float inCurrentTime, string& outError)
         unsigned int flags;
         mFMOD->FSOUND_Stream_Net_GetStatus(this->mCurrentInternetStream, &status, &read_percent, &bitrate, &flags);
     }
-
+#endif
     return theSuccess;
 }
 
 void UIHud::PlayRandomSong(void)
 {
+#if 0
 	// Pick random song first
 	string theRelativeSongName;
 	if(this->PickRandomSong(theRelativeSongName))
@@ -464,6 +477,7 @@ void UIHud::PlayRandomSong(void)
 //			sprintf(theErrorMessage, "say %s", FMOD_ErrorString(FSOUND_GetError()));
 //		}
 	}
+#endif
 }
 
 
@@ -528,6 +542,7 @@ void UIHud::Shutdown(void)
 
 void UIHud::ShutdownMusic(void)
 {
+#if 0
 	if(this->mSoundInitialized)
 	{
 		this->StopMusic();
@@ -542,6 +557,7 @@ void UIHud::ShutdownMusic(void)
         this->mSoundInitialized = false;
 
 	}
+#endif
 }
 
 void UIHud::StopMusic()
@@ -606,7 +622,7 @@ int UIHud::UpdateClientData(client_data_t *cdata, float time)
 void UIHud::UpdateMusic(float inCurrentTime)
 {
 	bool theJustTurnedOnMusic = false;
-
+#if 0
 	// When song is done, wait a time, then pick another song
 	if(this->mSoundInitialized)
 	{
@@ -653,6 +669,7 @@ void UIHud::UpdateMusic(float inCurrentTime)
 //			}
 //		}
 	}
+#endif
 }
 
 void UIHud::VidInit(void)

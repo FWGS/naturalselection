@@ -80,7 +80,7 @@ void MemoryInputStream::close(bool& success)
 	success = true;
 }
 /*
-#include "vgui_inputstream.h"
+#include "VGUI_inputstream.h"
 
 class MemoryInputStream : public vgui::InputStream
 {

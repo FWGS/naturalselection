@@ -11,7 +11,7 @@
 #endif
 #include "stdio.h"
 #include "string.h"
-#include "stacktrace.h"
+#include "Stacktrace.h"
 
 char *stackTrace( int skipAssert ) {
 	// Becuase this code may be running during a fatal,

@@ -1263,7 +1263,7 @@ void AvHHud::GetOrderDirection(vec3_t inTarget, int inOrderType)
 
 void AvHHud::DrawTeammateOrders()
 {
-	TeammateOrderListType::iterator toErase = NULL;
+	TeammateOrderListType::iterator toErase;
 	cl_entity_s* theLocalPlayer = gEngfuncs.GetLocalPlayer();
 
 	const float flashLength = 1.0f;
@@ -1311,8 +1311,8 @@ void AvHHud::DrawTeammateOrders()
 		}
 	}
 
-	if (toErase != NULL)
-		this->mTeammateOrder.erase(toErase);
+	//if (!toErase.empty())
+	//	this->mTeammateOrder.erase(toErase);
 
 	// flash target player
 	if (((this->mCurrentOrderTime + flashLength) > this->mTimeOfLastUpdate) && (this->mCurrentOrderTarget > 0))
@@ -2477,7 +2477,7 @@ void AvHHud::DrawBuildHealthEffectsForEntity(int inEntityIndex, float inAlpha)
 	{
 		if(theContinue && theLocalPlayer)
 		{
-			const kDrawEnemyBuildingDistance = 200;
+			const int kDrawEnemyBuildingDistance = 200;
 
 			// Draw effects if we are in top-down mode OR
 			if(	this->GetInTopDownMode() ||
@@ -3219,7 +3219,7 @@ void AvHHud::RenderMarineUI()
         char theResourceBuffer[64];
         
         LocalizeString(kMarineResourcePrefix, theResourceText);
-		_snprintf(theResourceBuffer, 64, "%s %d", theResourceText.c_str(), this->mVisualResources);
+		snprintf(theResourceBuffer, 64, "%s %d", theResourceText.c_str(), this->mVisualResources);
         
         theX = mViewport[0] + 0.3 * ScreenWidth();
         theY = mViewport[1] + 0.007 * ScreenHeight() + (theHeight - GetSmallFont().GetStringHeight()) / 2;
@@ -4038,6 +4038,7 @@ void AvHHud::RenderAlienUI()
 	{
 		bool theIsGestating = (this->GetHUDUser3() == AVH_USER3_ALIEN_EMBRYO);
 		bool theIsBeingDigested = this->GetIsBeingDigested();
+		int theBlip;
 
 		this->mSelectedNodeResourceCost = -1;
 		
@@ -4051,7 +4052,7 @@ void AvHHud::RenderAlienUI()
 		AngleVectors(v_angles, theForward, theRight, theUp);
 		VectorNormalize(theForward);
 
-		for(int theBlip = 0; theBlip < this->mFriendlyBlips.mNumBlips; theBlip++)
+		for(theBlip = 0; theBlip < this->mFriendlyBlips.mNumBlips; theBlip++)
 		{
 			// Get vector to current blip
 			Vector theVectorToBlip;

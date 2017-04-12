@@ -220,7 +220,7 @@ AvHParticleTemplate::GetSprite() const
 }
 
 void
-AvHParticleTemplate::SetSprite(string& inSpriteName)
+AvHParticleTemplate::SetSprite(const string& inSpriteName)
 {
 	this->mSprite = inSpriteName;
 }

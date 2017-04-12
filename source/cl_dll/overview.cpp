@@ -14,7 +14,7 @@
 // these are included for the math functions
 #include "com_model.h"
 #include "studio_util.h"
-
+#include "overview.h"
 #pragma warning(disable: 4244)
 
 //-----------------------------------------------------------------------------
@@ -47,6 +47,7 @@ int CHudOverview::VidInit()
 //-----------------------------------------------------------------------------
 int CHudOverview::Draw(float flTime)
 {
+#if 0
 	// only draw in overview mode
 	if (!gEngfuncs.Overview_GetOverviewState())
 		return 1;
@@ -144,7 +145,7 @@ int CHudOverview::Draw(float flTime)
 			DrawConsoleString(x, y + (1.1 * scale), string);
 		}
 	}
-
+#endif
 	return 1;
 }
 

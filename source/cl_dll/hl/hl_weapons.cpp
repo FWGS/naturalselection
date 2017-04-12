@@ -81,7 +81,7 @@
 #include "mod/AvHMovementUtil.h"
 
 #include "engine/APIProxy.h"
-#include "cl_dll/Exports.h"
+#include "cl_dll/exports.h"
 
 extern globalvars_t *gpGlobals;
 extern bool gIsJetpacking;
@@ -1519,7 +1519,7 @@ void CL_DLLEXPORT HUD_PostRunCmd( struct local_state_s *from, struct local_state
 	// Check to see whether too play local jetpack effects
 	if(runfuncs)
 	{
-		static sLastTime = 0;
+		static int sLastTime = 0;
 		float theTimePassed = time - sLastTime;
 
 		//CheckJetpack();

@@ -54,7 +54,7 @@
 #include "engine/cdll_int.h"
 #include "common/event_api.h"
 #include "common/cl_entity.h"
-#include <particledefs.h>
+#include <particledef.h>
 #include <p_vector.h>
 #include <papi.h>
 #include "common/usercmd.h"

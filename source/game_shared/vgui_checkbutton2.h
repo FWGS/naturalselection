@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2001, Valve LLC, All rights reserved. ============
+//========= Copyright © 1996-2002, Valve LLC, All rights reserved. ============
 //
 // Purpose: 
 //
@@ -12,8 +12,8 @@
 #endif
 
 
-#include "vgui_label.h"
-#include "vgui_imagepanel.h"
+#include "VGUI_Label.h"
+#include "VGUI_ImagePanel.h"
 #include "vgui_defaultinputsignal.h"
 
 
@@ -54,7 +54,6 @@ public:
 	// Set the label text.
 	void		SetText(char const *pText, ...);
 	void		SetTextColor(int r, int g, int b, int a);
-    void        setFont(Font* font);
 
 	// You can register for change notification here.
 	void		SetHandler(ICheckButton2Handler *pHandler);
@@ -62,6 +61,8 @@ public:
 	// Get/set the check state.
 	bool		IsChecked();
 	void		SetChecked(bool bChecked);
+
+	void        setFont(Font* font);
 
 // Panel overrides.
 public:

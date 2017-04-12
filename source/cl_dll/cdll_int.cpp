@@ -21,7 +21,7 @@
 #include "hud.h"
 #include "cl_util.h"
 #include "common/netadr.h"
-#include "vgui_schememanager.h"
+#include "vgui_SchemeManager.h"
 #include <papi.h>
 
 #include "pm_shared/pm_shared.h"
@@ -29,15 +29,15 @@
 #include <string.h>
 #include "hud_servers.h"
 #include "vgui_int.h"
-#include "mod\AvHHud.h"
-#include "mod\AvHUIFactory.h"
-#include "mod\AvHParticleSystemManager.h"
-#include "mod\AvHHulls.h"
+#include "mod/AvHHud.h"
+#include "mod/AvHUIFactory.h"
+#include "mod/AvHParticleSystemManager.h"
+#include "mod/AvHHulls.h"
 #include "common/interface.h"
-#include "common/ITrackerUser.h"
+#include "common/itrackeruser.h"
 
 #include "engine/APIProxy.h"
-#include "cl_dll/Exports.h"
+#include "cl_dll/exports.h"
 
 cl_enginefunc_t gEngfuncs;
 

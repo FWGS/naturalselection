@@ -5,7 +5,7 @@
 // $NoKeywords: $
 //=============================================================================
 
-#include "vgui.h"
+#include "VGUI.h"
 #include "bitmappng.h"
 #include <memory.h>
 

@@ -93,7 +93,7 @@
 #include "vgui_ServerBrowser.h"
 #include "vgui_ScorePanel.h"
 #include "vgui_SpectatorPanel.h"
-#include "game_shared\vgui_loadtga.h"
+#include "game_shared/vgui_loadtga.h"
 #include "mod/AvHConstants.h"
 #include "mod/AvHTitles.h"
 #include "mod/AvHPieMenuHandler.h"
@@ -102,6 +102,7 @@
 #include "ui/ChatPanel.h"
 #include "mod/AvHNetworkMessages.h"
 #include "util/STLUtil.h"
+#include "VGUI_Scheme.h"
 
 extern int g_iVisibleMouse;
 class CCommandMenu;
@@ -715,7 +716,7 @@ TeamFortressViewport::TeamFortressViewport(int x,int y,int wide,int tall) : Pane
     m_chatPanel->setVisible(false);
 
 }
-
+using namespace vgui;
 //-----------------------------------------------------------------------------
 // Purpose: Called everytime a new level is started. Viewport clears out it's data.
 //-----------------------------------------------------------------------------
@@ -763,10 +764,10 @@ void TeamFortressViewport::Initialize( void )
 		strcpy(m_sTeamNames[i], "");
 	}
 
-	App::getInstance()->setCursorOveride( App::getInstance()->getScheme()->getCursor(Scheme::SchemeCursor::scu_none) );
+	App::getInstance()->setCursorOveride( App::getInstance()->getScheme()->getCursor(Scheme::scu_none) );
 }
 
-class CException;
+class CException {};
 //-----------------------------------------------------------------------------
 // Purpose: Read the Command Menu structure from the txt file and create the menu.
 //			Returns Index of menu in m_pCommandMenus
@@ -1651,7 +1652,7 @@ void TeamFortressViewport::UpdateSpectatorPanel()
 		if ( gEngfuncs.IsSpectateOnly() )
 		{
 			// in HLTV mode show number of spectators
-            _snprintf( szText, 63, "%s: %d", CHudTextMessage::BufferedLocaliseTextString( "#Spectators" ), gHUD.m_Spectator.m_iSpectatorNumber );
+            snprintf( szText, 63, "%s: %d", CHudTextMessage::BufferedLocaliseTextString( "#Spectators" ), gHUD.m_Spectator.m_iSpectatorNumber );
 		}
 		else
 		{
@@ -1659,7 +1660,7 @@ void TeamFortressViewport::UpdateSpectatorPanel()
 			char szMapName[64];
 			COM_FileBase( gEngfuncs.pfnGetLevelName(), szMapName );
 
-			_snprintf ( szText, 63, "%s: %s",CHudTextMessage::BufferedLocaliseTextString( "#Spec_Map" ), szMapName );
+			snprintf ( szText, 63, "%s: %s",CHudTextMessage::BufferedLocaliseTextString( "#Spec_Map" ), szMapName );
 		}
 
 		szText[63] = 0;
@@ -1678,7 +1679,7 @@ void TeamFortressViewport::UpdateSpectatorPanel()
 				
 		m_pSpectatorPanel->m_CurrentTime->setText( szText ); */
 		int theTimeToDisplay = gHUD.GetGameTime();
-		_snprintf ( szText, 63, "%d:%02d\n", (theTimeToDisplay / 60), (theTimeToDisplay % 60) );
+		snprintf ( szText, 63, "%d:%02d\n", (theTimeToDisplay / 60), (theTimeToDisplay % 60) );
 		szText[63] = 0;
 		m_pSpectatorPanel->m_CurrentTime->setText( szText );
 
@@ -2585,12 +2586,13 @@ int TeamFortressViewport::MsgFunc_ScoreInfo( const char *pszName, int iSize, voi
 // if this message is never received, then scores will simply be the combined totals of the players.
 int TeamFortressViewport::MsgFunc_TeamScore( const char *pszName, int iSize, void *pbuf )
 {
+	int i;
 	string team_name;
 	int score, reset;
 	NetMsg_TeamScore( pbuf, iSize, team_name, score, reset);
 
 	// find the team matching the name
-	for ( int i = 1; i <= m_pScoreBoard->m_iNumTeams; i++ )
+	for ( i = 1; i <= m_pScoreBoard->m_iNumTeams; i++ )
 	{
 		if ( !stricmp( team_name.c_str(), g_TeamInfo[i].name ) )
 			break;
